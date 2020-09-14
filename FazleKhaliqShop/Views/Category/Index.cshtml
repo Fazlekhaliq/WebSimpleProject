@@ -1,0 +1,45 @@
+﻿@model IEnumerable<FazleKhaliqShop.Models.category>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div style="font-family:Arial">
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <p>
+     @using(Html.BeginForm("index", "Home", FormMethod.Get))
+     {
+    <b> Search By:</b> @Html.RadioButton("searchBy", "Product" ,true) <text>Product</text>
+     <br/>
+    @Html.TextBox("search")<input type="submit" value="Search" />
+     }
+</p>
+<table border="1">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.category1)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category1)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>
